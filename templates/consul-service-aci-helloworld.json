@@ -1,0 +1,20 @@
+{
+    "service": {
+    "id": "aci-helloworld",
+    "name": "aci-helloworld",
+    "tags": [
+        "nodejs"
+        ],
+    "port": 80,
+
+    "checks": [
+        {
+        "id": "http",
+        "name": "TCP on port 80",
+        "tcp": "localhost:80",
+        "interval": "10s",
+        "timeout": "1s"
+        }
+    ]
+}
+}

@@ -1,0 +1,32 @@
+{
+    "acl": {
+        "enabled": true,
+        "down_policy": "async-cache",
+        "default_policy": "deny",
+        "tokens": {
+            "default": "${agent_token}"
+        }
+    },
+    "tls": {
+        "defaults": {
+            "ca_file": "/tmp/ca.pem",
+            "verify_outgoing": true
+        }
+    },
+    "datacenter": "${deployment_id}",
+    "encrypt": "${gossip_encrypt_key}",
+    "encrypt_verify_incoming": true,
+    "encrypt_verify_outgoing": true,
+    "server": false,
+    "log_level": "INFO",
+    "ui_config": {
+        "enabled": true
+    },
+    "retry_join": [
+        "${server_private_fqdn}"
+    ],
+    "auto_encrypt": {
+        "tls": true
+    },
+    "bind_addr": "{{ GetPrivateInterfaces | include \"network\" \"10.0.0.0/16\" | attr \"address\" }}"
+}
